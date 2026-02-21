@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.env
+*.tgz
+.DS_Store
+
+# harness fuel (never committed)
+harness.project.json
+
+# User projects (local workspace — never committed)
+projects/
+!projects/.gitkeep
+
+# Test artifacts
+test-project/
