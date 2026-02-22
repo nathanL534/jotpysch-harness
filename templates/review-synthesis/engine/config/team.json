@@ -1,0 +1,12 @@
+{
+  "reviewCycle": "{{reviewCycle}}",
+  "team": [
+    {
+      "name": "Example Person",
+      "role": "engineer",
+      "rubric": "engineering.md",
+      "reviewers": ["Peer 1", "Peer 2", "Manager"]
+    }
+  ],
+  "rubricDir": "rubrics/{{reviewCycle}}"
+}

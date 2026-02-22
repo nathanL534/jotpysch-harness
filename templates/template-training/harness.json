@@ -1,0 +1,24 @@
+{
+  "version": "1",
+  "name": "template-training",
+  "displayName": "Note Template Training",
+  "description": "Analyze a clinic's existing notes and create customized JotPsych note templates",
+  "author": "JotPsych",
+  "tags": ["medical", "nlp", "training", "templates"],
+
+  "variables": [
+    { "name": "clinicName", "prompt": "Clinic name?", "default": "Clinic" },
+    { "name": "noteTypes", "prompt": "Note types to train (e.g. Intake, Follow-up, SOAP)?", "default": "Intake, Follow-up" }
+  ],
+
+  "requiredSecrets": [
+    { "name": "ANTHROPIC_API_KEY", "description": "For Claude API access", "required": true }
+  ],
+
+  "fuelDirs": [
+    { "path": "notes", "description": "Sample EHR notes from the clinic (PDFs)", "gitignore": true },
+    { "path": "current_templates", "description": "Clinic's existing note templates (JSON)", "gitignore": true },
+    { "path": "new_templates", "description": "Target JotPsych templates being built (JSON)", "gitignore": true },
+    { "path": "output", "description": "Final generated templates and deliverables", "gitignore": true }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "version": "1",
+  "name": "document-extraction",
+  "displayName": "Payer Document Extraction",
+  "description": "Extract billing rules and payer requirements from clinic documentation into structured JSON schemas",
+  "author": "JotPsych",
+  "tags": ["medical", "extraction", "billing", "payers"],
+
+  "variables": [
+    { "name": "clinicName", "prompt": "Clinic name?", "default": "Clinic" },
+    { "name": "focusArea", "prompt": "Focus area (billing rules, prior auth, coding guidelines)?", "default": "billing rules" }
+  ],
+
+  "requiredSecrets": [
+    { "name": "ANTHROPIC_API_KEY", "description": "For Claude API access", "required": true }
+  ],
+
+  "fuelDirs": [
+    { "path": "{{clinicName}}/data", "description": "Source documents — PDFs, CSVs, scanned docs", "gitignore": true },
+    { "path": "{{clinicName}}/outputs", "description": "Generated analysis and extracted data", "gitignore": true },
+    { "path": "outputs", "description": "Cross-clinic outputs and dashboards", "gitignore": true }
+  ]
+}

@@ -1,0 +1,7 @@
+.env
+*.pdf
+*.PDF
+*.csv
+.DS_Store
+node_modules/
+harness.project.json

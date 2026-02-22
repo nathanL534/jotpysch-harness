@@ -1,0 +1,24 @@
+{
+  "version": "1",
+  "name": "review-synthesis",
+  "displayName": "Performance Review Synthesis",
+  "description": "Collect peer/self reviews and synthesize into branded summary slide decks",
+  "author": "JotPsych",
+  "tags": ["reviews", "synthesis", "hr", "slides"],
+
+  "variables": [
+    { "name": "reviewCycle", "prompt": "Review cycle name (e.g. Winter 2026)?", "default": "Winter 2026" },
+    { "name": "teamName", "prompt": "Team or company name?", "default": "JotPsych" }
+  ],
+
+  "requiredSecrets": [
+    { "name": "ANTHROPIC_API_KEY", "description": "For Claude API access", "required": true },
+    { "name": "SLACK_BOT_TOKEN", "description": "For Slack notifications (optional)", "required": false }
+  ],
+
+  "fuelDirs": [
+    { "path": "collected", "description": "Raw review data collected from Notion (JSON)", "gitignore": true },
+    { "path": "output", "description": "Generated slide decks (HTML)", "gitignore": true },
+    { "path": "backgrounds", "description": "Generated background images for slides", "gitignore": true }
+  ]
+}
