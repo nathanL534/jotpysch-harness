@@ -6,6 +6,8 @@ You have access to the Notion MCP server configured in `.mcp.json`.
 If Notion MCP is not authenticated, stop immediately and tell the user:
 "Run `/mcp` in Claude Code and complete the Notion OAuth flow, then try again."
 
+**CRITICAL: Never create any Notion page without first reading `config/notion.sync.json` and confirming the parent page ID from that config. Every page parent must come from the config — never from assumptions or user input.**
+
 ---
 
 ## Workflow A — Project Setup (run once, at project start)
