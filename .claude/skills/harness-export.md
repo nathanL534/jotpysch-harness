@@ -8,10 +8,12 @@ Extract the engine from a project and save it as a reusable template.
 
 ## Instructions
 
-1. Export a project from `projects/`:
+1. Before exporting, ask the user: "What should this template be called?" — the template name should describe the *type of work*, not the specific clinic (e.g. `billing-workflow`, `payer-extraction`) since it will be reused across many clinics.
+
+2. Export a project from `projects/`:
 
 ```bash
-bun run src/index.ts export --from projects/<project-name> --name <template-name>
+harness export --from projects/<project-name> --name <template-name>
 ```
 
 This saves the template to `templates/<template-name>/` by default.
