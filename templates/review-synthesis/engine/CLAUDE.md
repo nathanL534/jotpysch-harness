@@ -11,7 +11,7 @@ Collect peer reviews and self-assessments from Notion, analyze them against role
 ```
 config/
 ├── team.json              ← Team roster + rubric mappings
-├── .env.example           ← API key template
+├── .env                   ← API keys (copied from root .env.example)
 └── advice.json            ← Per-person guidance/context
 
 rubrics/

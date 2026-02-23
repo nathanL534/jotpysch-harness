@@ -1,5 +1,6 @@
-*.pdf
-.DS_Store
 .env
+.DS_Store
 harness.project.json
 .notion/
+input/
+output/

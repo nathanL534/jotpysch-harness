@@ -47,17 +47,21 @@ export function registerSetupCommand(program: Command): void {
 
         const checks: SetupCheckItem[] = [];
 
-        // Check 1: .env exists
+        // Check 1: .env exists (with support for nested config/.env.example templates)
         const envPath = join(projectDir, ".env");
+        const rootEnvExamplePath = join(projectDir, ".env.example");
+        const configEnvExamplePath = join(projectDir, "config", ".env.example");
+        const envExamplePath = existsSync(rootEnvExamplePath)
+          ? rootEnvExamplePath
+          : configEnvExamplePath;
         const envExists = existsSync(envPath);
         checks.push({
           label: ".env file exists",
           passed: envExists,
           fixable: true,
           fix: async () => {
-            const examplePath = join(projectDir, ".env.example");
-            if (existsSync(examplePath)) {
-              await copyFile(examplePath, envPath);
+            if (existsSync(envExamplePath)) {
+              await copyFile(envExamplePath, envPath);
               output.success("Copied .env.example → .env");
             }
           },

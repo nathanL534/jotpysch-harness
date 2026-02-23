@@ -1,4 +1,4 @@
-import { readdir, readFile, writeFile, mkdir, stat } from "fs/promises";
+import { readdir, readFile, writeFile, mkdir } from "fs/promises";
 import { join, relative } from "path";
 import { substituteString, substitutePath } from "../core/variables.js";
 import type { VariableMap } from "../types.js";

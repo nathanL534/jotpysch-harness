@@ -1,0 +1,21 @@
+{
+  "version": "1",
+  "name": "starter",
+  "displayName": "Blank Starter",
+  "description": "A minimal harness for any task. Start here when no other template fits — then export to create a reusable template.",
+  "author": "JotPsych",
+  "tags": ["starter", "blank", "general"],
+
+  "variables": [
+    { "name": "projectDescription", "prompt": "One-line description of what this project does?", "default": "A Claude Code workspace" }
+  ],
+
+  "requiredSecrets": [
+    { "name": "ANTHROPIC_API_KEY", "description": "For Claude API access", "required": true }
+  ],
+
+  "fuelDirs": [
+    { "path": "input", "description": "Source files and data (gitignored)", "gitignore": true },
+    { "path": "output", "description": "Generated outputs (gitignored)", "gitignore": true }
+  ]
+}

@@ -48,8 +48,11 @@ export function registerNewCommand(program: Command): void {
           }
         }
 
+        // Auto-detect non-interactive: use --no-interactive flag OR no TTY (e.g. Claude's Bash tool)
+        const isInteractive = opts.interactive !== false && process.stdin.isTTY;
+
         // Prompt for missing variables (if interactive)
-        if (opts.interactive !== false && manifest.variables.length > 0) {
+        if (isInteractive && manifest.variables.length > 0) {
           const missingVars = manifest.variables.filter(
             (v) => !(v.name in userVariables)
           );
@@ -67,12 +70,23 @@ export function registerNewCommand(program: Command): void {
             Object.assign(userVariables, answers);
           }
         } else {
-          // Use defaults for non-interactive mode
+          // Use defaults for non-interactive mode (no TTY or --no-interactive)
           for (const v of manifest.variables) {
             if (!(v.name in userVariables) && v.default) {
               userVariables[v.name] = v.default;
             }
           }
+        }
+
+        // Warn if any required variables are still missing (no default, not provided)
+        const missingRequired = manifest.variables.filter(
+          (v) => !(v.name in userVariables) && !v.default
+        );
+        if (missingRequired.length > 0) {
+          output.error(
+            `Missing required variables: ${missingRequired.map((v) => v.name).join(", ")}. Pass them with --var key=value`
+          );
+          process.exit(1);
         }
 
         // 4. Scaffold — default to projects/<name>/ inside the harness repo
@@ -82,7 +96,7 @@ export function registerNewCommand(program: Command): void {
 
         // Check if output directory already exists
         if (existsSync(outputDir)) {
-          if (opts.interactive !== false) {
+          if (isInteractive) {
             const { overwrite } = await inquirer.prompt([
               {
                 type: "confirm",

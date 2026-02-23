@@ -1,0 +1,18 @@
+{
+  "version": "1",
+  "name": "test-template",
+  "displayName": "Test Template",
+  "description": "A test template for unit tests",
+  "author": "Test",
+  "tags": ["test"],
+  "variables": [
+    { "name": "greeting", "prompt": "What greeting?", "default": "Hello" }
+  ],
+  "requiredSecrets": [
+    { "name": "TEST_KEY", "description": "A test key", "required": true }
+  ],
+  "fuelDirs": [
+    { "path": "data/input", "description": "Input data", "gitignore": true },
+    { "path": "data/output", "description": "Output data", "gitignore": true }
+  ]
+}
