@@ -44,8 +44,9 @@ Use `--output <dir>` with `new` or `export` to override the default location.
 
 **"Set up / start / create a project for X"** → scaffold from an existing template:
 1. Run `harness list` to find the right template
-2. Run `harness new <template> <name>` — creates in `projects/`, never in `templates/`
-3. Never create files in `templates/` unless the user explicitly says "create a new template"
+2. Name the project `<clinicName>-<templateType>` (e.g. `valcourt-training`, `valcourt-billing`) — never just the clinic name alone, as one clinic may have multiple harnesses
+3. Run `harness new <template> <name>` — creates in `projects/`, never in `templates/`
+4. Never create files in `templates/` unless the user explicitly says "create a new template"
 
 **"Create a new template / add a template type"** → add to `templates/`:
 - Only do this when the user explicitly wants a new reusable template, not a project instance

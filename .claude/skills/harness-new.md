@@ -22,6 +22,8 @@ This creates the project in `projects/<name>/` by default.
 harness list
 ```
 
+Name the project `<clinicName>-<templateType>` (e.g. `valcourt-training`, `valcourt-billing`) — never just the clinic name alone, since a clinic may have multiple harnesses and duplicate names cause conflicts.
+
 Then scaffold with the matching template. Always pass variables directly with `--var` — do not rely on interactive prompts, as they require a TTY that is not available in this context:
 
 ```bash
