@@ -10,26 +10,30 @@ If Notion MCP is not authenticated, stop immediately and tell the user:
 
 ## Workflow A — Project Setup (run once, at project start)
 
-0. **Load config.** Read `config/notion.sync.json`. Note:
-   - `workspacePageId` — the shared JotPsych workspace page (mega-parent)
-   - `customerPageQuery` — what to search for as the customer parent (e.g. "Acme Corp")
-   - `pageTitleTemplate` — title for this harness's page
-   - `projectLinkFile` — where to store the page ID locally
+0. **Load config.** Read `config/notion.sync.json`. Store these values:
+   - `workspacePageId` → this is the mega-parent page ID
+   - `customerPageQuery` → the customer name to search for
+   - `pageTitleTemplate` → title for this harness's Notion page
+   - `projectLinkFile` → where to save the page ID locally
 
-1. **Check for existing link.** Read `projectLinkFile`. If it has a `pageId`, skip to step 5.
+1. **Check for existing link.** Read `projectLinkFile`. If it contains a `pageId`, skip to step 5.
 
-2. **Find or create the customer page** inside `workspacePageId`:
+2. **Fetch the workspace page.** Call `notion-fetch` with `workspacePageId` to confirm it's accessible. Note its ID — this is the only page that should ever be a direct parent for customer pages.
+
+3. **Find or create the CUSTOMER page** (one level below the workspace):
    - Search Notion for `customerPageQuery`
-   - If found: confirm with user, then **capture its page ID as `customerPageId`**
-   - If not found: create a new page titled `customerPageQuery` with parent = `workspacePageId`, then **capture the new page's ID as `customerPageId`**
+   - If a matching page is found AND it is a child of `workspacePageId`: save its ID as `customerPageId`
+   - If not found: create a new page with title = `customerPageQuery` and parent = `workspacePageId`. Save the new page's ID as `customerPageId`
+   - Do NOT proceed until you have `customerPageId` confirmed
 
-3. **Create this harness's page** with parent = `customerPageId` (NOT `workspacePageId`):
-   - Title: from `pageTitleTemplate`
-   - Content: the project summary block (see Workflow B below)
+4. **Create the HARNESS page** (one level below the customer page):
+   - Parent = `customerPageId` — this must NOT be `workspacePageId`
+   - Title = `pageTitleTemplate`
+   - Save the returned page ID as `harnessPageId`
 
-4. **Store the page ID.** Write to `projectLinkFile`:
+5. **Store the page ID.** Write to `projectLinkFile`:
    ```json
-   { "pageId": "<id>", "pageUrl": "<url>", "linkedAt": "<ISO date>" }
+   { "pageId": "<harnessPageId>", "pageUrl": "<url>", "linkedAt": "<ISO date>" }
    ```
    This file is gitignored — it's instance-specific fuel.
 
