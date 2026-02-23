@@ -1,0 +1,12 @@
+.env
+.DS_Store
+harness.project.json
+.notion/
+input/
+output/
+
+# === Harness Fuel (local-only data, never committed) ===
+# Source files and data (gitignored)
+input/
+# Generated outputs (gitignored)
+output/

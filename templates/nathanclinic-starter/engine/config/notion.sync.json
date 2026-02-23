@@ -1,0 +1,7 @@
+{
+  "workspacePageId": "310fe709-905c-80e0-ba6a-f2d7efa77281",
+  "customerPageQuery": "{{projectName}}",
+  "pageTitleTemplate": "{{projectName}}",
+  "projectLinkFile": ".notion/project.json",
+  "summaryHeading": "Project Summary"
+}
