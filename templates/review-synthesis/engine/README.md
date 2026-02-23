@@ -4,7 +4,7 @@ Performance review synthesis for **{{teamName}}** — **{{reviewCycle}}** cycle.
 
 ## Setup
 
-1. Copy `config/.env.example` to `.env` and add API keys (Slack optional)
+1. Copy `.env.example` to `.env` and add API keys (Slack optional)
 2. Update `config/team.json` with the team roster
 3. Place rubrics in `rubrics/{{reviewCycle}}/`
 4. (Optional) Run `/mcp` in Claude Code and authenticate Notion for sync workflows

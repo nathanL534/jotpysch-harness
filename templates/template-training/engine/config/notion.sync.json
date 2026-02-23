@@ -1,0 +1,7 @@
+{
+  "workspacePageId": "30efe709-905c-81ef-b2f7-d3589812b3e8",
+  "customerPageQuery": "{{clinicName}}",
+  "pageTitleTemplate": "{{clinicName}} — Template Training",
+  "projectLinkFile": ".notion/project.json",
+  "summaryHeading": "Project Summary"
+}

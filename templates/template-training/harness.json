@@ -7,8 +7,7 @@
   "tags": ["medical", "nlp", "training", "templates"],
 
   "variables": [
-    { "name": "clinicName", "prompt": "Clinic name?", "default": "Clinic" },
-    { "name": "noteTypes", "prompt": "Note types to train (e.g. Intake, Follow-up, SOAP)?", "default": "Intake, Follow-up" }
+    { "name": "clinicName", "prompt": "Clinic name?", "default": "Clinic" }
   ],
 
   "requiredSecrets": [

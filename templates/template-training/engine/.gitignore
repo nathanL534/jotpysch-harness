@@ -2,3 +2,4 @@
 .DS_Store
 .env
 harness.project.json
+.notion/
