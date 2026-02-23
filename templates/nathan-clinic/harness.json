@@ -1,0 +1,38 @@
+{
+  "version": "1",
+  "name": "nathan-clinic",
+  "displayName": "Nathan Clinic",
+  "description": "Template exported from nathan-clinic",
+  "author": "JotPsych",
+  "tags": [],
+  "variables": [],
+  "requiredSecrets": [
+    {
+      "name": "ANTHROPIC_API_KEY",
+      "description": "For Claude API access (required)",
+      "required": true
+    }
+  ],
+  "fuelDirs": [
+    {
+      "path": "input",
+      "description": "input directory (auto-detected from .gitignore)",
+      "gitignore": true
+    },
+    {
+      "path": "output",
+      "description": "output directory (auto-detected from .gitignore)",
+      "gitignore": true
+    },
+    {
+      "path": "input",
+      "description": "input directory (auto-detected from .gitignore)",
+      "gitignore": true
+    },
+    {
+      "path": "output",
+      "description": "output directory (auto-detected from .gitignore)",
+      "gitignore": true
+    }
+  ]
+}
