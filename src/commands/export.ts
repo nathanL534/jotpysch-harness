@@ -11,6 +11,7 @@ import { join, resolve, relative } from "path";
 import { existsSync } from "fs";
 import inquirer from "inquirer";
 import type { HarnessManifest, FuelDirDefinition } from "../types.js";
+import { loadManifest } from "../core/manifest.js";
 import * as output from "../utils/output.js";
 
 /** Files/dirs to always skip when exporting */
@@ -307,7 +308,15 @@ export function registerExportCommand(program: Command): void {
           JSON.stringify(manifest, null, 2)
         );
 
-        // 6. Print results
+        // 6. Validate the generated harness.json
+        try {
+          await loadManifest(outputDir);
+          output.success("harness.json validated");
+        } catch (err) {
+          output.error(`harness.json validation failed: ${err instanceof Error ? err.message : String(err)}`);
+        }
+
+        // 7. Print results
         output.header("Export complete");
         output.keyValue("Engine files", String(filesCopied.length));
         output.keyValue("Fuel dirs detected", String(fuelDirs.length));

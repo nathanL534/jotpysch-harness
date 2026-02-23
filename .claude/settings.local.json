@@ -12,5 +12,18 @@
       "Bash(git *)"
     ],
     "deny": []
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/nathaniellee/claude/jotpsych/harness/.claude/hooks/validate-manifest.sh"
+          }
+        ]
+      }
+    ]
   }
 }
