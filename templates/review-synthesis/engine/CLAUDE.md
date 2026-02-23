@@ -61,4 +61,6 @@ This project has Notion's MCP server configured (`.mcp.json`). To connect:
    - **Track progress**: Update the review cycle's Notion page with synthesis status
    - **Publish results**: Push summaries and links to generated slide decks back to Notion so managers can access them
 
+**Notion rule: Always use the `notion-sync` agent for any Notion page creation. Never create a standalone Notion page directly — the agent reads `config/notion.sync.json` to find the correct parent page and hierarchy.**
+
 Use the Notion MCP tools directly — no copy-pasting needed. This replaces the manual Notion collection in `scripts/notion/`.

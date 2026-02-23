@@ -33,3 +33,5 @@ This project has Notion's MCP server configured (`.mcp.json`). To connect:
    - **Pull context**: Search Notion for existing info about {{clinicName}}
    - **Track progress**: Create or update a Notion page for this project
    - **Publish results**: Push a summary when templates are finalized
+
+**Notion rule: Always use the `notion-sync` agent for any Notion page creation. Never create a standalone Notion page directly — the agent reads `config/notion.sync.json` to find the correct parent page and hierarchy.**

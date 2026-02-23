@@ -59,4 +59,6 @@ This project has Notion's MCP server configured (`.mcp.json`). To connect:
    - **Track progress**: Create or update a Notion page for this extraction project
    - **Publish results**: Push extraction summaries and schema links back to the clinic's Notion page
 
+**Notion rule: Always use the `notion-sync` agent for any Notion page creation. Never create a standalone Notion page directly — the agent reads `config/notion.sync.json` to find the correct parent page and hierarchy.**
+
 Use the Notion MCP tools directly — no copy-pasting needed.
